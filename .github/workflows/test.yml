@@ -22,7 +22,7 @@ jobs:
         python-version: 3.8  # Or the version you prefer
 
     - name: Set PYTHONPATH
-      run: echo "::add-path::$(pwd)"
+      run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
     - name: Install dependencies
       run: |
