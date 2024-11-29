@@ -1,5 +1,5 @@
 import unittest
-from sudoku import solve_sudoku
+from sodoku import solve_sudoku
 
 class TestSudokuSolver(unittest.TestCase):
     def test_valid_easy(self):
