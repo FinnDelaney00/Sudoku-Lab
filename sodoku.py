@@ -50,11 +50,14 @@ def is_safe(board, row, col, num):
     return True
 
 def solve_sudoku(board):
-    # Check if the board is valid
+    # Validate input board dimensions
+    if len(board) != 9 or any(len(row) != 9 for row in board):
+        raise ValueError("Invalid board size. Board must be 9x9.")
+    
     if not is_valid_board(board):
-        return None  # Return None for an invalid board
-
+        raise ValueError("Invalid board")
+    
     board_copy = [row[:] for row in board]  # Deep copy to avoid mutation
     if solve(board_copy):
         return board_copy
-    return None  # Return None if no solution exists
+    return None
