@@ -53,5 +53,60 @@ class TestSudokuSolver(unittest.TestCase):
         result = solve_sudoku(board)
         self.assertIsNone(result)  # Invalid board should return None
 
+    def test_valid_medium(self):
+        # Medium difficulty puzzle
+        board = [
+            [8, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 3, 6, 0, 0, 0, 0, 0],
+            [0, 7, 0, 0, 9, 0, 2, 0, 0],
+            [0, 5, 0, 0, 0, 7, 0, 0, 0],
+            [0, 0, 0, 0, 4, 5, 7, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0, 3, 0],
+            [0, 0, 1, 0, 0, 0, 0, 6, 8],
+            [0, 0, 8, 5, 0, 0, 0, 1, 0],
+            [0, 9, 0, 0, 0, 0, 4, 0, 0]
+        ]
+        solution = solve_sudoku(board)
+        self.assertEqual(solution, [
+            [8, 1, 2, 4, 3, 9, 5, 7, 6],
+            [4, 9, 3, 6, 8, 2, 1, 5, 7],
+            [5, 7, 6, 8, 9, 1, 2, 4, 3],
+            [9, 5, 4, 2, 1, 7, 8, 3, 6],
+            [3, 8, 2, 9, 4, 5, 7, 6, 1],
+            [1, 6, 7, 3, 2, 8, 9, 3, 5],
+            [2, 3, 1, 7, 0]
+        ] )
+
+    def test_empty_sudoku(self):
+        # Empty Sudoku board test
+        board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+        self.assertEqual(solve_sudoku(board), None)
+    
+    def test_single_value_sudoku(self):
+        # Simple board with a single missing number 
+        board = [
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [4, 5, 6, 7, 8, 9, 1, 2, 3],
+            [7, 8, 9, 1, 2, 3, 4, 5, 6],
+            [2, 3, 4, 5, 6, 7, 8, 9, 1],
+            [5, 6, 7, 8, 9, 1, 2, 3, 4],
+            [8, 9, 1, 2, 3, 4, 5, 6, 7],
+            [3, 4, 5, 6, 7, 8, 9, 1, 2],
+            [6, 7, 8, 9, 1, 2, 3, 4, 5],
+            [9, 1, 2, 3, 4, 5, 6, 7, 8]
+        ]
+        result = solve_sudoku(board)
+        self.assertEqual(result, None)
+
 if __name__ == "__main__":
-    unittest.main()
+   
